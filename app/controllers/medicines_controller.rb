@@ -6,7 +6,7 @@ class MedicinesController < ApplicationController
     medicine = Medicine.create(
                   name: params[:name],
                   dosage: params[:dosage],
-                  stock: params[:integer],
+                  stock: params[:stock],
                   schedule_id: params[:schedule_id]
                 )
 
@@ -18,6 +18,7 @@ class MedicinesController < ApplicationController
 
     render json: medicine
   end
+
 
 
 end

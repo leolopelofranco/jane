@@ -56,4 +56,7 @@ Rails.application.routes.draw do
 
   post '/schedule/create' => 'schedules#create'
   get '/schedule/show/:id' => 'schedules#show'
+
+  post '/medicine/create' => 'medicines#create'
+  get '/medicine/show/:id' => 'medicines#show'
 end
