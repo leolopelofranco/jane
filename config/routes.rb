@@ -5,6 +5,19 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  devise_for :users, :skip => [:sessions, :registrations, :passwords],  :path_prefix => 'api/v1'
+
+  namespace :api do
+   namespace :v1 do
+      devise_scope :user do
+        post 'login' => 'sessions#create', :as => :login
+        delete 'logout' => 'sessions#destroy', :as => :logout
+        post 'register' => 'registrations#create', :as => :register
+        delete 'delete_account' => 'registrations#destroy', :as => :delete_account
+      end
+      get 'greetings' => 'greetings#index', :as => :greetings
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
