@@ -35,6 +35,10 @@ gem 'oj'
 
 gem 'slim'
 
+gem 'devise'
+
+gem 'simple_token_authentication', '~> 1.0'
+
 group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
