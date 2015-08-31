@@ -11,18 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712061333) do
+ActiveRecord::Schema.define(version: 20150831160702) do
 
-
-  # Add ActiveToMedicineColumn
-
-  # Add LabelToScheduleColumn
-
-  # Add FirstNameToUser
-  # Add LastNameToUser
-  # Add PhoneNumberToUser
-  # Add BirthdayWeightHeightToUser
-  
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150712061333) do
     t.integer  "schedule_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "active"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -47,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150712061333) do
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "label"
   end
 
   create_table "takens", force: :cascade do |t|
@@ -72,6 +64,12 @@ ActiveRecord::Schema.define(version: 20150712061333) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "authentication_token"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "mobile"
+    t.datetime "birthday"
+    t.integer  "weight"
+    t.integer  "height"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
