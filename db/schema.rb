@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20150712061333) do
 
+
+  # Add ActiveToMedicineColumn
+
+  # Add LabelToScheduleColumn
+
+  # Add FirstNameToUser
+  # Add LastNameToUser
+  # Add PhoneNumberToUser
+  # Add BirthdayWeightHeightToUser
+  
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 

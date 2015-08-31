@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :skip => [:sessions, :registrations, :passwords],  :path_prefix => 'api/v1'
 
-  namespace :api do
+  namespace :api, constraints: { format: 'json' } do
    namespace :v1 do
       devise_scope :user do
         post 'login' => 'sessions#create', :as => :login
@@ -16,6 +16,14 @@ Rails.application.routes.draw do
         delete 'delete_account' => 'registrations#destroy', :as => :delete_account
       end
       get 'greetings' => 'greetings#index', :as => :greetings
+
+      post '/schedules' => 'schedules#create'
+
+      # post '/schedule/create' => 'schedules#create'
+      get '/schedules/:id' => 'schedules#show'
+
+      post '/medicine/create' => 'medicines#create'
+      get '/medicine/show/:id' => 'medicines#show'
     end
   end
   # Example of regular route:
@@ -66,10 +74,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  post '/schedule/create' => 'schedules#create'
-  get '/schedule/show/:id' => 'schedules#show'
-
-  post '/medicine/create' => 'medicines#create'
-  get '/medicine/show/:id' => 'medicines#show'
 end
